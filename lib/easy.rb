@@ -30,3 +30,26 @@ end
 # @param {ListNode} l1
 # @param {ListNode} l2
 # @return {ListNode}
+def add_two_numbers(l1, l2)
+    res = (list_to_num(l1) + list_to_num(l2)).to_s.chars
+    i = res.length - 2
+    list = ListNode.new(res[-1])
+    node = list
+    i.downto(0) do | j |
+        cur = ListNode.new(res[j])
+        node.next = cur
+        node = cur
+    end
+
+    return list
+end
+
+def list_to_num(l1)
+    arr = []
+    cur = l1
+    until cur.nil?
+       arr.unshift(cur.val.to_s)
+       cur = cur.next
+    end
+    arr.join('').to_i
+end
