@@ -57,3 +57,17 @@ end
 # Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
 # @param {String} s
 # @return {Integer}
+def first_uniq_char(s)
+    hash = Hash.new([])
+    i = 0
+    while i < s.length
+       hash[s[i]] = hash[s[i]] + [i]
+        i += 1
+    end
+
+    idx = hash.values.select{|x| x.length == 1}
+    return -1 if idx.length == 0
+    p idx
+    idx.sort_by{|x| x[0]}[0][0]
+
+end
