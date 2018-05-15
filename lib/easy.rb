@@ -92,3 +92,58 @@ end
 # @param {String} num1
 # @param {String} num2
 # @return {String}
+def multiply(num1, num2)
+    return "0" if num1 == "0" || num2 == "0"
+
+    res = str_to_i(num1) * str_to_i(num2)
+
+    i_to_str(res)
+end
+
+def str_to_i(str)
+    hash = {
+        '0' => 0,
+        '1' => 1,
+        '2' => 2,
+        '3' => 3,
+        '4' => 4,
+        '5' => 5,
+        '6' => 6,
+        '7' => 7,
+        '8' => 8,
+        '9' => 9
+        }
+    sum = 0
+    str.chars.reverse.each_with_index do |n, i|
+        sum += (hash[n] * 10**i)
+    end
+
+    sum
+end
+
+def i_to_str(num)
+    hash = {
+        '0' => 0,
+        '1' => 1,
+        '2' => 2,
+        '3' => 3,
+        '4' => 4,
+        '5' => 5,
+        '6' => 6,
+        '7' => 7,
+        '8' => 8,
+        '9' => 9
+        }
+    str = ""
+    power = 0
+    while num / (10**power) > 0
+       power += 1
+    end
+
+    (power - 1).downto(0) do |i|
+        str += hash.key(num / 10**i)
+        num = num % 10**i
+    end
+
+    str
+end
