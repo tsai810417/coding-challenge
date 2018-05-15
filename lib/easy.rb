@@ -4,3 +4,12 @@
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer[]}
+def two_sum(nums, target)
+    nums.each_with_index do |x,i|
+        j = i + 1
+        while j < nums.length
+            return [i,j] if nums[i] + nums[j ]== target
+            j += 1
+        end
+    end
+end
