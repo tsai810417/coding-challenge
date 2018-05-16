@@ -221,3 +221,23 @@ end
 # @param {String} s
 # @param {Integer} k
 # @return {String}
+def reverse_str(s, k)
+    group = [[]]
+    (0...s.length).to_a.each do |i|
+       if group[-1].length < 2*k
+           group[-1].push(s[i])
+       else
+           group.push([s[i]])
+       end
+    end
+
+    group.map{|x| swap(x.join, k)}.join
+end
+
+def swap(s, k)
+    if s[k..-1]
+        s[0...k].reverse + s[k..-1]
+    else
+        s[0...k].reverse
+    end
+end
