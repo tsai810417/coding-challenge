@@ -368,3 +368,29 @@ end
 #
 # # @param {String[]} words
 # # @return {String[]}
+def find_words(words)
+    words.select{|x| in_same_row?(x)}
+end
+
+def in_same_row?(str)
+   r1 = "qwertyuiop"
+    r2 = "asdfghjkl"
+    r3 = "zxcvbnm"
+
+    if r1.include?(str[0].downcase)
+        str.downcase.chars[1..-1].each do |l|
+            return false unless r1.include?(l)
+        end
+        return true
+    elsif r2.include?(str[0].downcase)
+        str.downcase.chars[1..-1].each do |l|
+            return false unless r2.include?(l)
+        end
+        return true
+    elsif r3.include?(str[0].downcase)
+        str.downcase.chars[1..-1].each do |l|
+            return false unless r3.include?(l)
+        end
+        return true
+    end
+end
