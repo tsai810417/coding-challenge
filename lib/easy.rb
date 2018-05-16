@@ -155,3 +155,20 @@ end
 # Input: "Let's take LeetCode contest"
 # Output: "s'teL ekat edoCteeL tsetnoc"
 # Note: In the string, each word is separated by single space and there will not be any extra space in the string.
+
+# @param {String} s
+# @return {String}
+def reverse_words(s)
+    s.split(' ').map{|x| reverse_word(x)}.join(' ')
+end
+
+def reverse_word(str)
+   i = 0
+    res = ""
+    while i < str.length
+        res = str[i] + res
+        i += 1
+    end
+
+    res
+end
