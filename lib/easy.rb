@@ -335,3 +335,23 @@ end
 #
 # # @param {String} s
 # # @return {String}
+def to_goat_latin(s)
+    s.split(' ').map.with_index{|x, i| translate(x, i)}.join(' ')
+end
+
+
+def translate(str, idx)
+    v = "aeiouAEIOU".chars
+    res = ""
+    if v.include?(str[0])
+       res = str + 'ma'
+    else
+        res = str[1..-1] + str[0] + 'ma'
+    end
+
+    (idx + 1).times do
+        res += 'a'
+    end
+
+    res
+end
