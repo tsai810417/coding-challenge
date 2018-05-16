@@ -285,3 +285,16 @@ end
 # @param {String} s
 # @param {String} t
 # @return {Boolean}
+def is_isomorphic(s, t)
+    s_hash = Hash.new{[]}
+    s.chars.each_with_index do |x, i|
+        s_hash[x] = s_hash[x].push(i)
+    end
+
+    t_hash = Hash.new{[]}
+    t.chars.each_with_index do |x,i|
+        t_hash[x] = t_hash[x].push(i)
+    end
+
+    t_hash.values.sort == s_hash.values.sort
+end
