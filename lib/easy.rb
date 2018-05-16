@@ -193,3 +193,17 @@ end
 # @param {String} a
 # @param {String} b
 # @return {Boolean}
+def rotate_string(a, b)
+    return true if a == b && a == ""
+
+    a.length.times do
+       return true if a == b
+        a = rotate(a)
+    end
+
+    false
+end
+
+def rotate(a)
+    a = a[1..-1] + a[0]
+end
