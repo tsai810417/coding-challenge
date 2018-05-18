@@ -435,3 +435,19 @@ end
 
 # @param {String[]} ops
 # @return {Integer}
+def cal_points(ops)
+    arr = []
+    ops.each do |x|
+       if x == '+'
+           arr.push(arr[-1] + arr[-2])
+       elsif x == 'D'
+           arr.push(arr[-1] * 2)
+       elsif x == 'C'
+           arr.pop
+       else
+           arr.push(x.to_i)
+       end
+    end
+
+    arr.reduce(:+)
+end
