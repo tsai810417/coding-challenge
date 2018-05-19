@@ -472,3 +472,15 @@ end
 # The number in given array is in range [-100,000, 100,000].
 # @param {Integer[]} candies
 # @return {Integer}
+def distribute_candies(candies)
+    hash = Hash.new(0)
+    candies.each do |el|
+        hash[el] += 1
+    end
+
+    if hash.keys.length >= candies.length/2
+        return candies.length / 2
+    else
+        return hash.keys.length
+    end
+end
