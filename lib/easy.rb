@@ -515,3 +515,19 @@ end
 # ]
 # @param {Integer} n
 # @return {String[]}
+def fizz_buzz(n)
+    arr = []
+    (1..n).each do |i|
+       if i % 15 == 0
+           arr.push("FizzBuzz")
+       elsif i % 3 == 0
+           arr.push("Fizz")
+       elsif i % 5 == 0
+           arr.push("Buzz")
+       else
+           arr.push(i.to_s)
+       end
+    end
+
+    arr
+end
