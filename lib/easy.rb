@@ -566,3 +566,36 @@ end
 # All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.
 # @param {Integer[][]} grid
 # @return {Integer}
+def max_increase_keeping_skyline(grid)
+    x = []
+    y = []
+    n = 0
+    sum = 0
+    while n < grid.length
+        y.push(grid[n].max)
+        cur = []
+        m = 0
+        while m < grid.length
+            cur.push(grid[m][n])
+            m += 1
+        end
+        x.push(cur.max)
+        n += 1
+    end
+
+    p x
+    p y
+
+    n = 0
+    while n < grid.length
+        m = 0
+        while m < grid.length
+            dif = [x[m], y[n]].min - grid[n][m]
+            sum += dif if dif > 0
+            m += 1
+        end
+        n += 1
+    end
+
+    sum
+end
