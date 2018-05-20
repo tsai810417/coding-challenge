@@ -672,3 +672,18 @@ end
 # @param {String} s
 # @param {Character} c
 # @return {Integer[]}
+def shortest_to_char(s, c)
+    res = []
+    s.length.times do |i|
+        count = 0
+        while true
+            if (s[i+count] == c && i + count < s.length) || (s[i-count] == c && i - count >= 0)
+                res.push(count)
+                break
+            end
+            count += 1
+        end
+    end
+
+    res
+end
