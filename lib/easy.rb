@@ -632,3 +632,25 @@ end
 
 # @param {Integer[]} nums
 # @return {TreeNode}
+def construct_maximum_binary_tree(nums)
+    if nums.length == 1
+        return TreeNode.new(nums[0])
+    elsif nums.empty?
+        return nil
+    end
+
+    max_idx = 0
+    i = 0
+    while i < nums.length
+        if nums[i] > nums[max_idx]
+            max_idx = i
+        end
+        i += 1
+    end
+
+    new_tree = TreeNode.new(nums[max_idx])
+    new_tree.left = construct_maximum_binary_tree(nums[0...max_idx])
+    new_tree.right = construct_maximum_binary_tree(nums[max_idx+1..-1])
+
+    new_tree
+end
