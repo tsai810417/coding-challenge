@@ -765,3 +765,14 @@ end
 # @param {Integer} r
 # @param {Integer} c
 # @return {Integer[][]}
+def matrix_reshape(nums, r, c)
+    total = nums.flatten.length
+    return nums if r * c > total
+    res = Array.new(r) {Array.new(c)}
+    flattened = nums.flatten
+    r.times do |i|
+     res[i] = flattened.shift(c)
+    end
+
+    res
+end
