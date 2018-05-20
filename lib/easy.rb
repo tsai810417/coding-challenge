@@ -807,3 +807,18 @@ end
 
 # @param {Integer[][]} matrix
 # @return {Boolean}
+def is_toeplitz_matrix(matrix)
+    x = matrix.length
+    y = matrix[0].length
+    i = 0
+    while i < x - 1
+        j = 0
+        while j < y - 1
+            return false if matrix[i][j] != matrix[i+1][j+1]
+            j += 1
+        end
+        i += 1
+    end
+
+    true
+end
