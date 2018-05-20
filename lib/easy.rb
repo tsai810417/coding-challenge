@@ -714,3 +714,15 @@ end
 # @param {String} s
 # @param {String} t
 # @return {String}
+def custom_sort_string(s, t)
+   res = ""
+    s.length.times do |i|
+       if t.include?(s[i])
+           t.count(s[i]).times do
+               res += s[i]
+           end
+           t.delete!(s[i])
+       end
+    end
+    res += t
+end
