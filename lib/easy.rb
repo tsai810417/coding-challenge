@@ -959,3 +959,12 @@ end
 # The order of your output does not matter.
 # @param {String[]} strs
 # @return {String[][]}
+def group_anagrams(strs)
+    hash = Hash.new{[]}
+    strs.each do |word|
+        rearrange = word.chars.sort
+       hash[rearrange] = hash[rearrange].push(word)
+    end
+
+    hash.values
+end
