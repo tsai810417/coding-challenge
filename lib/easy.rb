@@ -884,3 +884,17 @@ end
 
 # @param {Integer[]} nums
 # @return {Integer}
+def find_peak_element(nums)
+    return 0 if nums.length == 1
+
+    i = 0
+    while i < nums.length - 1
+        if nums[i+1] < nums[i]
+            return i
+        elsif nums[i+1] > nums[i]
+            i += 1
+        end
+    end
+
+    return i
+end
