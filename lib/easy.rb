@@ -841,3 +841,19 @@ end
 # Could you come up with a one-pass algorithm using only constant space?
 # @param {Integer[]} nums
 # @return {Void} Do not return anything, modify nums in-place instead.
+def sort_colors(nums)
+    check = false
+    while check == false
+        i = 0
+        check = true
+        while i < nums.length-1
+            if nums[i] > nums[i+1]
+                nums[i], nums[i+1] = nums[i+1], nums[i]
+                check = false
+            end
+            i += 1
+        end
+    end
+
+    nums
+end
