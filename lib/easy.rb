@@ -924,3 +924,19 @@ end
 # @param {Integer[][]} matrix
 # @param {Integer} target
 # @return {Boolean}
+def search_matrix(matrix, target)
+    rows = []
+
+    (matrix.length).times do |i|
+        next if matrix[i].empty?
+       if matrix[i][0] <= target && matrix[i][-1] >= target
+           rows.push(i)
+       end
+    end
+    p rows
+    rows.each do |row|
+       return true if matrix[row].include?(target)
+    end
+
+    return false
+end
