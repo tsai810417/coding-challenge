@@ -1096,3 +1096,19 @@ def product_except_self(nums)
 
     res
 end
+
+# Is Unique: Implement a menthod to determine if a string has all unique
+# characters.
+
+def is_uniq?(str)
+  hash = Hash.new{false}
+  str.length.times do |i|
+    if hash[str[i]] == false
+      hash[str[i]] = true
+    else
+      return false
+    end
+  end
+
+  return true
+end
