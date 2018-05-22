@@ -1219,3 +1219,17 @@ end
 # @param {Integer[]} nums2
 # @param {Integer} n
 # @return {Void} Do not return anything, modify nums1 in-place instead.
+def merge(nums1, m, nums2, n)
+    arr1 = nums1[0...m]
+    (m+n).times do |i|
+       if arr1.empty?
+           nums1[i] = nums2.shift
+       elsif nums2.empty?
+           nums1[i] = arr1.shift
+       elsif arr1[0] < nums2[0]
+           nums1[i] = arr1.shift
+       else
+           nums1[i] = nums2.shift
+       end
+    end
+end
