@@ -1253,3 +1253,16 @@ end
 # All given inputs are in lowercase letters a-z.
 # @param {String[]} strs
 # @return {String}
+def longest_common_prefix(strs)
+    return "" if strs.length == 0
+    return strs[0] if strs.length == 1
+    i = 0
+    while i <= strs[0].length
+       if strs.all?{|x| x[0..i] == strs[0][0..i]}
+           i += 1
+       else
+           break
+       end
+    end
+    return strs[0][0...i]
+end
