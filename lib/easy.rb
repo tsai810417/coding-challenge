@@ -1164,3 +1164,6 @@ end
 #              the decimal part is truncated, 2 is returned.
 # @param {Integer} x
 # @return {Integer}
+def my_sqrt(x)
+   (x**0.5).floor
+end
