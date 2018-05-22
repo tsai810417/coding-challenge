@@ -1061,3 +1061,38 @@ end
 # Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
 # @param {Integer[]} nums
 # @return {Integer[]}
+def product_except_self(nums)
+    # solution with division
+    # total = nums.reduce(:*)
+    # nums.each_index do |i|
+    #    nums[i] = total / nums[i]
+    # end
+
+    # solution with O(n^2) worst case
+    # res = []
+    # nums.each_index do |i|
+    #    res.push((nums[0...i] + nums[i+1..-1]).reduce(:*))
+    # end
+    # res
+
+    prod_after_me = []
+    a = 1
+    nums.each do |n|
+        prod_after_me.push(a)
+        a *= n
+
+    end
+    prod_before_me = []
+    b = 1
+    ((nums.length)-1).downto(0) do |i|
+       prod_before_me.unshift(b)
+        b *= nums[i]
+
+    end
+    res = []
+    nums.length.times do |i|
+       res.push(prod_after_me[i] * prod_before_me[i])
+    end
+
+    res
+end
