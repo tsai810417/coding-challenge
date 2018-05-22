@@ -1097,8 +1097,7 @@ def product_except_self(nums)
     res
 end
 
-# Is Unique: Implement a menthod to determine if a string has all unique
-# characters.
+# Is Unique: Implement a menthod to determine if a string has all unique characters.
 
 def is_uniq?(str)
   hash = Hash.new{false}
@@ -1111,4 +1110,15 @@ def is_uniq?(str)
   end
 
   return true
+end
+
+# Is Permutation: Given 2 strings, write a method to decide if one is a permutaiton of the other
+
+def is_permutation?(s1, s2)
+  return false if s1.length != s2.length
+  sort(s1) == sort(s2)
+end
+
+def sort(str)
+  str.chars.sort.join
 end
