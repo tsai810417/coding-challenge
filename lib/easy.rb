@@ -1138,3 +1138,9 @@ end
 # Output: false
 # @param {String} s
 # @return {Boolean}
+def is_palindrome(s)
+    alp = ('a'..'z').to_a + (0..9).to_a.map{|x| x.to_s}
+    arr = s.downcase.chars.select{|x| alp.include?(x)}
+    p arr
+    arr.reverse == arr
+end
