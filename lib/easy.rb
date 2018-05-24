@@ -1282,3 +1282,10 @@ end
 # Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 # @param {Integer[]} nums
 # @return {Integer}
+def missing_number(nums)
+  # this is O(n logn) solution
+    sorted = nums.sort
+    nums.length.times do |i|
+        return i if sorted[i] != i
+    end
+end
