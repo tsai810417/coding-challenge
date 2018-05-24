@@ -1379,3 +1379,22 @@ end
 # @param {Integer[]} nums1
 # @param {Integer[]} nums2
 # @return {Integer[]}
+def intersect(nums1, nums2)
+    arr1 = nums1.dup
+    arr2 = nums2.dup
+    arr1.sort!
+    arr2.sort!
+    res = []
+    until arr1.empty? || arr2.empty?
+       if  arr1[0] == arr2[0]
+           res.push(arr1.shift)
+           arr2.shift
+       elsif arr1[0] < arr2[0]
+           arr1.shift
+       elsif arr2[0] < arr1[0]
+           arr2.shift
+       end
+    end
+
+    res
+end
