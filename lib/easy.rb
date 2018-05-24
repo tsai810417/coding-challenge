@@ -1318,3 +1318,24 @@ end
 
 # @param {Integer[]} nums
 # @return {TreeNode}
+def sorted_array_to_bst(nums)
+    return nil if nums.length == 0
+    mid = nums.length / 2
+    root = TreeNode.new(nums[mid])
+    cur_node = root
+    i = 1
+    until mid-i < 0
+        cur_node.left = TreeNode.new(nums[mid-i])
+        cur_node = cur_node.left
+        i += 1
+    end
+    cur_node = root
+    i = 1
+    until mid + i == nums.length
+        cur_node.right = TreeNode.new(nums[mid+i])
+        cur_node = cur_node.right
+        i += 1
+    end
+
+    root
+end
