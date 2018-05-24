@@ -1411,3 +1411,24 @@ end
 # Note: The input will be in range of [-1e7, 1e7].
 # @param {Integer} num
 # @return {String}
+def convert_to_base7(num)
+    n = num.abs
+    str = num < 0 ? "-" : ""
+
+    if n < 7
+        return num.to_s
+    else
+        return str + convert(n)
+    end
+end
+
+def convert(n)
+    str = ""
+    if n < 7
+        return n.to_s
+    else
+        str = (n%7).to_s + str
+        str = convert(n/7) + str
+    end
+    return str
+end
