@@ -1354,3 +1354,11 @@ end
 # Multiplication of any three numbers in the input won't exceed the range of 32-bit signed integer.
 # @param {Integer[]} nums
 # @return {Integer}
+def maximum_product(nums)
+    sorted = nums.sort
+    if (sorted[0] * sorted[1] * sorted[-1]) > sorted[-3..-1].reduce(:*)
+        return (sorted[0] * sorted[1] * sorted[-1])
+    else
+        return sorted[-3..-1].reduce(:*)
+    end
+end
