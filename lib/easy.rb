@@ -1775,3 +1775,12 @@ end
 # Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
 # @param {Integer[]} nums
 # @return {Integer[]}
+def single_number(nums)
+    hash = Hash.new{false}
+    dup = []
+    nums.each do |el|
+        hash[el] ? dup.push(el) : hash[el] = true
+    end
+
+    nums - dup
+end
