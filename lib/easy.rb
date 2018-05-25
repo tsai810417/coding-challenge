@@ -1798,3 +1798,8 @@ end
 # Could you do it without any loop/recursion in O(1) runtime?
 # @param {Integer} num
 # @return {Integer}
+def add_digits(num)
+  # this is recursive solution  
+  return num if num < 10
+  return add_digits(num % 10 + num / 10)
+end
