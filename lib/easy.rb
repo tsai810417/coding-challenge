@@ -1907,3 +1907,15 @@ end
 # Output: 2
 # @param {Integer[]} nums
 # @return {Integer}
+def majority_element(nums)
+    # solution before optimization
+    # hash = Hash.new{0}
+    # half = nums.length / 2.0
+    # nums.each do |el|
+    #    hash[el] += 1
+    #     return el if hash[el] >= half
+    # end
+
+    # optimized solution
+    nums.sort[nums.length / 2]
+end
