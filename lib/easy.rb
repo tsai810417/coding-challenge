@@ -1601,3 +1601,17 @@ end
 # ]
 # @param {Integer[]} nums
 # @return {Integer[][]}
+def permute(nums)
+    return [[]] if nums.empty?
+    to_add = nums[-1]
+    prev = permute(nums[0...-1])
+    res = []
+    prev.each do |el|
+        res.push(el+[to_add])
+        el.length.times do |i|
+           res.push(el[0...i] + [to_add] + el[i..-1])
+        end
+    end
+
+    res.sort
+end
