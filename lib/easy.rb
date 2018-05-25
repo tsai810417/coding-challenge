@@ -1458,3 +1458,8 @@ end
 
 # @param {TreeNode} root
 # @return {Integer[]}
+def inorder_traversal(root)
+  # this is recursive solution
+  return [] if root.nil?
+  inorder_traversal(root.left) + [root.val] + inorder_traversal(root.right)
+end
