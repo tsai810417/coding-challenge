@@ -1657,3 +1657,11 @@ end
 # Output: 4
 # @param {Integer[]} nums
 # @return {Integer}
+def single_number(nums)
+    sorted = nums.sort
+    i = 0
+    while i < sorted.length
+        return sorted[i] if sorted[i+1] != sorted[i]
+        i += 2
+    end
+end
