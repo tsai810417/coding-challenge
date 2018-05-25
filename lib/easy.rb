@@ -1752,3 +1752,12 @@ end
 
 # @param {TreeNode} root
 # @return {TreeNode}
+def invert_tree(root)
+    return nil if root.nil?
+    return root if root.left.nil? && root.right.nil?
+    node = TreeNode.new(root.val)
+    node.right = invert_tree(root.left)
+    node.left = invert_tree(root.right)
+
+    node
+end
