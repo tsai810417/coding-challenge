@@ -1507,3 +1507,25 @@ end
 # Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 # @param {String} s
 # @return {Integer}
+def roman_to_int(s)
+    hash = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+        }
+    sum = 0
+    s.chars.each_with_index do |x, i|
+        next if i == s.length - 1
+       if hash[s[i+1].to_sym] > hash[x.to_sym]
+           sum -= hash[x.to_sym]
+       else
+           sum += hash[x.to_sym]
+       end
+    end
+
+    sum += hash[s[-1].to_sym]
+end
