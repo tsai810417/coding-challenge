@@ -1574,3 +1574,12 @@ end
 # @param {TreeNode} p
 # @param {TreeNode} q
 # @return {Boolean}
+def is_same_tree(p, q)
+    return true if p.nil? && q.nil?
+    return false if q.nil? || p.nil?
+
+    return false if p.val != q.val
+    is_same_tree(p.right, q.right) && is_same_tree(p.left, q.left)
+
+
+end
