@@ -1867,3 +1867,27 @@ end
 # Output: 701
 # @param {String} s
 # @return {Integer}
+def title_to_number(s)
+#     this solution runtime is 52ms
+#     alp = ('A'..'Z').to_a
+#     hash = Hash.new
+#     26.times do |i|
+#        hash[alp[i]] = i+1
+#     end
+
+#     arr = s.chars.reverse
+#     sum = 0
+#     arr.each_with_index do |x,i|
+#        sum += hash[x] * (26 ** i)
+#     end
+
+#     sum
+
+#     this solution runtime improve to 40ms
+    sum = 0
+    s.chars.reverse.each_with_index do |x,i|
+        sum += (x.ord - 64) * (26 ** i)
+    end
+
+    sum
+end
