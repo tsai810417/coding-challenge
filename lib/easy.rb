@@ -1721,3 +1721,34 @@ def can_win_nim(n)
 
    true
 end
+
+# 226. Invert Binary Tree
+# Invert a binary tree.
+#
+# Example:
+#
+# Input:
+#
+#      4
+#    /   \
+#   2     7
+#  / \   / \
+# 1   3 6   9
+# Output:
+#
+#      4
+#    /   \
+#   7     2
+#  / \   / \
+# 9   6 3   1
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+
+# @param {TreeNode} root
+# @return {TreeNode}
