@@ -1989,3 +1989,6 @@ end
 # Explanation: The array represents the integer 4321.
 # @param {Integer[]} digits
 # @return {Integer[]}
+def plus_one(digits)
+    (digits.join.to_i + 1).to_s.chars.map{|x| x.to_i}
+end
