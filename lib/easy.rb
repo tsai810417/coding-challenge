@@ -2010,3 +2010,24 @@ end
 # ]
 # @param {Integer} num_rows
 # @return {Integer[][]}
+def generate(num_rows)
+    return [] if num_rows == 0
+    return [[1]] if num_rows == 1
+    return [[1],[1,1]] if num_rows == 2
+
+    prev = generate(num_rows - 1)
+
+    prev.push(create_new(prev[-1]))
+
+    prev
+end
+
+def create_new(arr)
+   new_arr = []
+    arr.each_index do |i|
+       break if i == arr.length - 1
+        new_arr.push(arr[i] + arr[i+1])
+    end
+
+    new_arr.unshift(1).push(1)
+end
