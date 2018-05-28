@@ -2106,3 +2106,17 @@ end
 # The web page's width and length you designed must be positive integers.
 # @param {Integer} area
 # @return {Integer[]}
+def construct_rectangle(area)
+    arr = pairs(area)
+    arr = arr.sort_by{|x| x[0]-x[1]}
+    return arr[0]
+end
+
+def pairs(n)
+   arr = []
+    ((n**0.5).to_i.downto(1)).each do |el|
+       arr.push([n/el, el]) if n % el == 0 && n/el >= el
+    end
+
+    arr
+end
