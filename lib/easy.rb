@@ -2073,3 +2073,16 @@ end
 # @param {String[]} dict
 # @param {String} sentence
 # @return {String}
+def replace_words(dict, sentence)
+    arr = sentence.split(' ')
+    arr.each_with_index do |el, i|
+        dict.each do |x|
+           if el[0...x.length] == x
+               arr[i] = x
+               break
+           end
+        end
+    end
+
+    arr.join(' ')
+end
