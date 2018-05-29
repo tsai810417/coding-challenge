@@ -17,6 +17,8 @@ A RESTful system has to operate in the client-sever model.
 A non-RESTful alternative to client-server architecture is event-based integration architecture. Each component continuously broadcasts events while listening for pertinent events from other components. There's no one-to-one communication. REST requires one-to-one communication, so event-based integration architecture would not be RESTful.
 
 #### Stateless     
+Servers and clients have their own states, but they do not need to keep tract of each other's state. When a client is not interacting with the server, the server has no idea of its existence. The server also not keep a record of past requests. Each request is treated as a standalone.
+
 ##### Uniform interface     
 ##### Caching
 ##### Layered system
