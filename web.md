@@ -52,5 +52,7 @@ When a system has identifiers for each resource, manipulates them through sendin
 This is the most important attribute of a RESTful system, as it allows for clients to intelligently adapt to changes.
 
 ##### Caching
+It refers to the constraint that server responses should be labelled as either cacheable or non-cacheable. Caching occurs when the client stores previous responses it received from the server, so when the data is needed again, it can save a trip over the network by using the cached data. The ability to cache is made possible by the interface constraint of "self-descriptive messages".
+
 ##### Layered system
 ##### Code on demand
