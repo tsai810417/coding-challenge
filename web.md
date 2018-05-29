@@ -1,4 +1,3 @@
-# WEB what is RESTful means
 # WEB
 
 ### What is RESTful means     
@@ -60,3 +59,5 @@ It refers to the fact that there can be more components than just servers and cl
 ##### Code on demand
 It is the only optional constraint and refers to the ability for a server to send executable code to the client. This is HTML's ```<script>``` tag. When the HTML document is loaded, the browser automatically fetches the JavaScript from the server and executes it locally.
 
+##### Conclusion
+A RESTful system is any network that fulfills the Fielding Constraints. A RESTful system is meant to be flexible for different use cases, scalable to accommodate a large number of users and components, and adaptable over time.
