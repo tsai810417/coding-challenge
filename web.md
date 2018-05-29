@@ -58,3 +58,5 @@ It refers to the constraint that server responses should be labelled as either c
 It refers to the fact that there can be more components than just servers and clients. This means there can be more than one layer in the system. However, each component is constrained to only see and interact with the very next layer.
 
 ##### Code on demand
+It is the only optional constraint and refers to the ability for a server to send executable code to the client. This is HTML's ```<script>``` tag. When the HTML document is loaded, the browser automatically fetches the JavaScript from the server and executes it locally.
+
