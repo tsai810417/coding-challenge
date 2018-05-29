@@ -55,4 +55,6 @@ This is the most important attribute of a RESTful system, as it allows for clien
 It refers to the constraint that server responses should be labelled as either cacheable or non-cacheable. Caching occurs when the client stores previous responses it received from the server, so when the data is needed again, it can save a trip over the network by using the cached data. The ability to cache is made possible by the interface constraint of "self-descriptive messages".
 
 ##### Layered system
+It refers to the fact that there can be more components than just servers and clients. This means there can be more than one layer in the system. However, each component is constrained to only see and interact with the very next layer.
+
 ##### Code on demand
