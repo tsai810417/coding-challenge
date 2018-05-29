@@ -7,3 +7,9 @@
 
 ### The Fielding Constraints     
 Architectural constraints that a system must satisfy to be considered RESTful
+#### Client-server
+#### Stateless     
+##### Uniform interface     
+##### Caching
+##### Layered system
+##### Code on demand
