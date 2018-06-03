@@ -48,6 +48,8 @@ function soundMaker(sound, times) {
 ```
 
 ### Closures
+Closure use the variable defined outside of the scope of the function( use variable declared in the parent function)
+
 When define a function, there are three levels of scope that the function will have access to:
 - Arguments passed into the function
 - Variables defined in the function
