@@ -47,6 +47,13 @@ function soundMaker(sound, times) {
 }
 ```
 
+### Closures
+When define a function, there are three levels of scope that the function will have access to:
+- Arguments passed into the function
+- Variables defined in the function
+- Variables are already declared when the function is defined
+
+
 ### F.prototype
 In JavaScript, we can set a prototype using ```__proto__```. JavaScript has had prototypal inheritance from the beginning, one of the core features of the language.
 But in the old times, the only way to set prototype is to use a ```"prototype"``` property of the constructor function.
