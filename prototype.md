@@ -62,6 +62,8 @@ The ```setTimeout``` with 0ms is going to run after all the stack is done execut
 
 All the web APIs and AJAX request work the same way as ```setTimeout```. So that is the __Async call__.
 
+The ```setTimeout``` is not the guaranteed time to execution, but the minimum time to execution because the callbacks will get queued to passed to call stack.
+
 ### F.prototype
 In JavaScript, we can set a prototype using ```__proto__```. JavaScript has had prototypal inheritance from the beginning, one of the core features of the language.
 But in the old times, the only way to set prototype is to use a ```"prototype"``` property of the constructor function.
