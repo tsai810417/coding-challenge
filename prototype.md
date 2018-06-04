@@ -58,6 +58,8 @@ When define a function, there are three levels of scope that the function will h
 ### Event Loop
 Event loop has one simple job. The event loop's job is to look at the stack and look at the task queue. If the stack is empty it takes the first thing(callback) on the queue and pushes it on to the stack, then the stack will run it.
 
+The ```setTimeout``` with 0ms is going to run after all the stack is done executing
+
 
 ### F.prototype
 In JavaScript, we can set a prototype using ```__proto__```. JavaScript has had prototypal inheritance from the beginning, one of the core features of the language.
