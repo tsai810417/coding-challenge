@@ -60,6 +60,7 @@ Event loop has one simple job. The event loop's job is to look at the stack and 
 
 The ```setTimeout``` with 0ms is going to run after all the stack is done executing
 
+All the web APIs and AJAX request work the same way as ```setTimeout```. So that is the __Async call__.
 
 ### F.prototype
 In JavaScript, we can set a prototype using ```__proto__```. JavaScript has had prototypal inheritance from the beginning, one of the core features of the language.
