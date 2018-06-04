@@ -55,6 +55,9 @@ When define a function, there are three levels of scope that the function will h
 - Variables defined in the function
 - Variables are already declared when the function is defined
 
+### Event Loop
+Event loop has one simple job. The event loop's job is to look at the stack and look at the task queue. If the stack is empty it takes the first thing(callback) on the queue and pushes it on to the stack, then the stack will run it.
+
 
 ### F.prototype
 In JavaScript, we can set a prototype using ```__proto__```. JavaScript has had prototypal inheritance from the beginning, one of the core features of the language.
