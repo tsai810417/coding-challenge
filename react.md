@@ -20,4 +20,7 @@
   - Most common use case: used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate(but no access to previous props)
   - Can NOT call setState
 
+- componentDidUpdate: You can do the same stuff did in componentDidMount--reset the layout or redraw on canvas.
+  - Most common use case: update the DOM in response to props or state changes
+  - Can call setState
   
