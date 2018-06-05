@@ -15,3 +15,9 @@
 - shouldComponentUpdate: nextProps as first argument and nextState is the second. This is returning a boolean--an answer to "should I re-render?".
   - Most common use case: controlling exactly when your component will re-render
   - Can NOT call setState
+
+- componentWillUpdate: Functionally same as componentWillReceiveProps, but not allowed to call this.setState.
+  - Most common use case: used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate(but no access to previous props)
+  - Can NOT call setState
+
+  
