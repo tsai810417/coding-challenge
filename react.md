@@ -23,4 +23,9 @@
 - componentDidUpdate: You can do the same stuff did in componentDidMount--reset the layout or redraw on canvas.
   - Most common use case: update the DOM in response to props or state changes
   - Can call setState
+
+- componentWillUnmount: Your component is going to go away, but before it goes, it asks if you have last-minute requests e.g cancel outgoing network requests or remove event listeners associated with this component.
+  - Most common use case: clean up any leftover deris from the component
+  - Can NOT call setState
+
   
