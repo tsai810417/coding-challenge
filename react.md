@@ -11,3 +11,7 @@
 - componentWillReceiveProps: where you have access to both the next props(via nextProps) and current props(via this.props). You will check which props will change, and then if the props will change in a way that is significant, act on it.
   - Most common use case: acting on particular prop changes to trigger state transitions
   - Can call setState
+
+- shouldComponentUpdate: nextProps as first argument and nextState is the second. This is returning a boolean--an answer to "should I re-render?".
+  - Most common use case: controlling exactly when your component will re-render
+  - Can NOT call setState
