@@ -2137,3 +2137,8 @@ end
 # [5,6]
 # @param {Integer[]} nums
 # @return {Integer[]}
+def find_disappeared_numbers(nums)
+    l = nums.length
+
+    (1..l).to_a - nums
+end
