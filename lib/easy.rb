@@ -2160,3 +2160,9 @@ end
 # [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
 # @param {Integer[]} nums
 # @return {Integer}
+def min_moves(nums)
+    big = nums.max
+    small = nums.min
+    return 0 if big == small
+    big - small + 1
+end
