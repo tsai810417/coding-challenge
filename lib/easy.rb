@@ -2175,3 +2175,7 @@ end
 # @param {Integer} a
 # @param {Integer} b
 # @return {Integer}
+def get_sum(a, b)
+    arr = [a,b]
+    arr.sum
+end
