@@ -2166,3 +2166,12 @@ def min_moves(nums)
     return 0 if big == small
     big - small + 1
 end
+
+# 371. Sum of Two Integers
+# Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+#
+# Example:
+# Given a = 1 and b = 2, return 3.
+# @param {Integer} a
+# @param {Integer} b
+# @return {Integer}
