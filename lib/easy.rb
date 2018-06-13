@@ -2192,3 +2192,10 @@ end
 # @param {Integer[]} nums
 # @param {Integer} k
 # @return {Integer[]}
+def top_k_frequent(nums, k)
+    hash = Hash.new(0)
+    nums.each do |el|
+        hash[el] += 1
+    end
+    hash.keys.sort_by{|x| -hash[x]}[0...k]
+end
