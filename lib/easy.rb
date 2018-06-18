@@ -2242,3 +2242,33 @@ end
 # @param {ListNode} l1
 # @param {ListNode} l2
 # @return {ListNode}
+def merge_two_lists(l1, l2)
+    new_list = ListNode.new(nil)
+    cur = new_list
+    node1 = l1
+    node2 = l2
+    while node1 || node2
+       if node1 && node2
+          if node1.val > node2.val
+              cur.val = node2.val
+              node2 = node2.next
+          else
+              cur.val = node1.val
+              node1 = node1.next
+          end
+       elsif node1
+           cur.val = node1.val
+           node1 = node1.next
+       else
+           cur.val = node2.val
+           node2 = node2.next
+       end
+
+        if node1 || node2
+           cur.next = ListNode.new(nil)
+            cur = cur.next
+        end
+    end
+
+    new_list
+end
