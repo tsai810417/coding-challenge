@@ -2359,3 +2359,22 @@ def missing_number(nums)
         return i if sorted[i] != i
     end
 end
+
+#Create my quickSort
+# @param {Interger[]} arr
+# @return {Interger[]}
+def my_quick_sort(arr)
+  return arr if arr.length <= 1
+  p = arr[0]
+  left = []
+  right = []
+  arr[1..-1].each do |el|
+    if el > p
+      right.push(el)
+    else
+      left.push(el)
+    end
+  end
+
+  return my_quick_sort(left) + [p] + my_quick_sort(right)
+end
