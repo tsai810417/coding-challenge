@@ -57,3 +57,32 @@ class LRUCache {
     }
   }
 }
+
+class MinStack {
+  constructor(){
+    this.stack = new Array();
+    this.length = 0;
+  }
+
+  push(num){
+    let min;
+    if(this.length === 0) {min = num;}
+    else if(this.getMin() > num) {min = num;}
+    else {min = this.getMin();};
+    this.stack.push([num, min]);
+    this.length = this.stack.length;
+  }
+
+  pop(){
+    this.stack.pop();
+    this.length = this.stack.length;
+  }
+
+  top(){
+    return this.stack[this.length - 1][0];
+  }
+
+  getMin(){
+    return this.stack[this.length - 1][1];
+  }
+}
