@@ -86,3 +86,39 @@ class MinStack {
     return this.stack[this.length - 1][1];
   }
 }
+
+class ListNode{
+  constructor(val){
+    this.val = val;
+    this.next = null;
+  }
+}
+
+const mergeKLists = function(lists) {
+  if(lists.length === 0){
+    return [];
+  }
+  let temp;
+  let i = 0;
+  while(i < lists.length){
+    temp = mergeTwo(temp, lists[i]);
+    i ++;
+  }
+
+  return temp;
+}
+
+const mergeTwo = function(list1, list2) {
+  if (!list2) { return list1 };
+  if (!list1) { return list2 };
+  let res = new ListNode();
+  if (list1.val < list2.val) {
+    res.val = list1.val;
+    res.next = mergeTwo(list1.next, list2);
+  } else {
+    res.val = list2.val;
+    res.next = mergeTwo(list1, list2.next);
+  }
+
+  return res;
+}
