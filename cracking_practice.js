@@ -137,3 +137,38 @@ const findPair = function(arr, sum) {
 
 	return false;
 }
+
+const letterCombinations = function(digits){
+  let hash = {
+    "2": ['a','b','c'],
+    "3": ['d', 'e', 'f'],
+    "4": ['g', 'h', 'i'],
+    "5": ['j', 'k', 'l'],
+    "6": ['m', 'n', 'o'],
+    "7": ['p', 'q', 'r', 's'],
+    "8": ['t', 'u', 'v'],
+    "9": ['w', 'x', 'y', 'z']
+  };
+
+  if(digits.length === 0) { return [] };
+  if(digits.length === 1) { return hash[digits] };
+  let i = 1;
+  let res = hash[digits[0]];
+  while(i < digits.length){
+    res = combineTwo(res, hash[digits[i]]);
+    i ++;
+  }
+
+  return res;
+}
+
+const combineTwo = function(arr1, arr2){
+  let res = [];
+  arr1.forEach(el1 => {
+    arr2.forEach(el2 => {
+      res.push(el1.concat(el2));
+    });
+  });
+
+  return res;
+}
