@@ -122,3 +122,18 @@ const mergeTwo = function(list1, list2) {
 
   return res;
 }
+
+const findPair = function(arr, sum) {
+	let hash = {};
+	let i = 0;
+	while (i < arr.length){
+		if(hash[(sum - arr[i])] === true){
+			return true;
+		} else {
+			hash[arr[i]] = true;
+		}
+		i += 1;
+	}
+
+	return false;
+}
