@@ -190,3 +190,16 @@ const generateParentheses = function(n){
   backtrack();
   return res;
 }
+
+const myPow = function(x,y){
+  if (y === 0) {
+    return 1;
+  } else if (y % 2 === 0) {
+    let half = myPow(x,y/2);
+    return half * half;
+  } else if (y > 0) {
+    return myPow(x, y-1) * x;
+  } else if (y < 0) {
+    return myPow(x, y+1) / x;
+  }
+}
