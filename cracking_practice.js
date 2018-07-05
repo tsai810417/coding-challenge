@@ -172,3 +172,21 @@ const combineTwo = function(arr1, arr2){
 
   return res;
 }
+
+const generateParentheses = function(n){
+  let res = [];
+  const backtrack = function(str = '', left = 0, right = 0){
+    if (str.length === 2 * n) {
+      res.push(str);
+    }
+    if (left < n) {
+      backtrack(str.concat('('), left+1, right);
+    }
+    if (right < left) {
+      backtrack(str.concat(')'), left, right+1);
+    }
+  }
+
+  backtrack();
+  return res;
+}
