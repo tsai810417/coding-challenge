@@ -203,3 +203,30 @@ const myPow = function(x,y){
     return myPow(x, y+1) / x;
   }
 }
+
+const numIslands = function(grid){
+  if (grid.length === 0) {return 0;}
+  let height = grid.length;
+  let width = grid[0].length;
+  let sum = 0;
+  const clearNeighbors = function(i, j){
+    if (i >= 0 && j >= 0 && i < height && j < width && grid[i][j] === '1'){
+      grid[i][j] = '0'
+      clearNeighbors(i+1, j);
+      clearNeighbors(i-1, j);
+      clearNeighbors(i, j+1);
+      clearNeighbors(i, j-1);
+    }
+  }
+
+  for(h = 0; h < height; h++){
+    for(w = 0; w < width; w++){
+      if(grid[h][w] === '1'){
+        sum += 1;
+        clearNeighbors(h,w);
+      }
+    }
+  }
+
+  return sum;
+}
