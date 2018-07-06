@@ -230,3 +230,11 @@ const numIslands = function(grid){
 
   return sum;
 }
+
+const findAnagram = function(a, b){
+  hash = new Object();
+  b.forEach((el, idx) => {
+    hash[el] = idx;
+  });
+  return a.map(el => hash[el]);
+}
