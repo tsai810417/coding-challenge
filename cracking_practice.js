@@ -238,3 +238,48 @@ const findAnagram = function(a, b){
   });
   return a.map(el => hash[el]);
 }
+
+const islandPerimeter = function(grid){
+  if (grid.length === 0){ return 0; }
+  let sticks = 0;
+  let height = grid.length;
+  let width = grid[0].length;
+
+  const checkNeighbor = function(h, w){
+    if (h === 0) {
+      sticks += 1;
+    }
+    if (h === height - 1) {
+      sticks += 1;
+    }
+    if (w === 0) {
+      sticks += 1;
+    }
+    if (w === width - 1){
+      sticks += 1;
+    }
+    if (w - 1 >= 0 && grid[h][w-1] === 0) {
+      sticks += 1;
+    }
+    if (h - 1 >= 0 && grid[h-1][w] === 0) {
+      sticks += 1;
+    }
+    if (w + 1 < width && grid[h][w+1] === 0) {
+      sticks += 1;
+    }
+    if (h + 1 < height && grid[h+1][w] === 0) {
+      sticks += 1;
+    }
+  }
+  
+  for(i = 0; i < height; i++){
+    for(j = 0; j < width; j++){
+      if (grid[i][j] === 1){
+        checkNeighbor(i,j);
+      }
+    }
+  }
+
+
+  return sticks;
+}
