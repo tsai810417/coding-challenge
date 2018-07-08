@@ -271,7 +271,7 @@ const islandPerimeter = function(grid){
       sticks += 1;
     }
   }
-  
+
   for(i = 0; i < height; i++){
     for(j = 0; j < width; j++){
       if (grid[i][j] === 1){
@@ -280,6 +280,28 @@ const islandPerimeter = function(grid){
     }
   }
 
-
   return sticks;
+}
+
+const findTheDifference = function(str1, str2){
+  let hash = new Object();
+  let diff;
+
+  str1.split('').forEach(el => {
+    if (typeof hash[el] === 'undefined') {
+      hash[el] = 1;
+    } else {
+      hash[el] += 1;
+    }
+  });
+
+  str2.split('').forEach(el => {
+    if (typeof hash[el] === 'undefined' || hash[el] <= 0) {
+      diff = el;
+    } else {
+      hash[el] -= 1;
+    }
+  });
+
+  return diff;
 }
