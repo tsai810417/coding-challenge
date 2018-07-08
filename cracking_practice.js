@@ -315,3 +315,22 @@ const isPowerOfTwo = function(n){
     return isPowerOfTwo(n / 2);
   }
 }
+
+const reverseVowels = function(str){
+  let stack = [];
+  let vowels = ['a','e','i','o','u','A','E','I','O','U'];
+  for (i = 0; i < str.length; i++){
+    if (vowels.includes(str[i])){
+      stack.push(str[i]);
+    }
+  }
+  let res = "";
+  for (i = 0; i < str.length; i++){
+    if (vowels.includes(str[i])){
+      res = res.concat(stack.pop());
+    } else{
+      res = res.concat(str[i]);
+    }
+  }
+  return res;
+}
