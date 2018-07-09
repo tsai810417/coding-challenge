@@ -334,3 +334,21 @@ const reverseVowels = function(str){
   }
   return res;
 }
+
+const isIsomorphic = function(s, t){
+  const translate = function(str){
+    let hash = new Object();
+    let newStr = "";
+    let id = 1;
+    for(i = 0; i < str.length; i++){
+      if (!hash[str[i]]) {
+        hash[str[i]] = id;
+        id += 1
+      }
+      newStr = newStr.concat(hash[str[i]]);
+    }
+    return newStr;
+  }
+
+  return translate(s) === translate(t);
+}
