@@ -391,32 +391,44 @@ const maxArea = function(height){
 }
 
 const lengthOfLongestSubstring = function(s){
-  if (s.length <= 1){
-    return s.length;
-  }
-  let longest = 1;
-  let begin = 0;
-  let end = begin + longest;
-  const isUniq = function(str){
-    let hash = new Object();
-    for (i = 0; i < str.length; i++){
-      if (typeof hash[str[i]] === 'undefined'){
-        hash[str[i]] = true;
-      } else {
-        return false;
-      }
+  let startIdx = 0;
+  let hash = new Object();
+  let maxLength = 0;
+  for (i = 0; i < s.length; i++){
+    let seenIdx = hash[s[i]];
+    if (seenIdx !== 'undefined' && seenIdx >= startIdx){
+      startIdx = seenIdx + 1;
     }
-    return true;
+    hash[s[i]] = i;
+    maxLength = Math.max(maxLength, i - startIdx + 1);
   }
-  while(begin < s.length - 1 && end < s.length){
-    if (isUniq(s.slice(begin, end+1))){
-      longest += 1;
-      end += 1;
-    } else {
-      begin += 1;
-      end = begin + longest;
-    }
-  }
-
-  return longest;
+  return maxLength;
+  // if (s.length <= 1){
+  //   return s.length;
+  // }
+  // let longest = 1;
+  // let begin = 0;
+  // let end = begin + longest;
+  // const isUniq = function(str){
+  //   let hash = new Object();
+  //   for (i = 0; i < str.length; i++){
+  //     if (typeof hash[str[i]] === 'undefined'){
+  //       hash[str[i]] = true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
+  // while(begin < s.length - 1 && end < s.length){
+  //   if (isUniq(s.slice(begin, end+1))){
+  //     longest += 1;
+  //     end += 1;
+  //   } else {
+  //     begin += 1;
+  //     end = begin + longest;
+  //   }
+  // }
+  //
+  // return longest;
 }
