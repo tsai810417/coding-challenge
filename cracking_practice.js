@@ -364,3 +364,28 @@ const mergeTrees = function(t1, t2){
 
   return t1;
 }
+
+const maxArea = function(height){
+  let begin = 0;
+  let end = height.length - 1;
+  let max = 0;
+  let temp = 0;
+  const area = function(a, b){
+    if(height[a] > height[b]){
+      return height[b] * (b-a);
+    } else {
+      return height[a] * (b-a);
+    }
+  }
+  while(begin < end){
+    temp = area(begin, end);
+    if(height[begin] < height[end]){
+      begin += 1;
+    } else {
+      end -= 1;
+    }
+    if (temp > max) max = temp;
+  }
+
+  return max;
+}
