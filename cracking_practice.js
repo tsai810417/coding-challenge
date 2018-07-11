@@ -439,28 +439,46 @@ const deleteNode = function(node){
 }
 
 const rob = functino(nums){
-let hash = new Object();
-let selected = [];
-let sum = 0;
-nums.forEach((el, idx) => {
-  if (typeof hash[el] === 'undefined'){ hash[el] = [idx] }
-  else { hash[el].push(idx) }
-});
-let sorted = nums.sort().reverse();
-const validHouse = function(idx){
-  let check = true;
-  selected.forEach(el => {
-    if (Math.abs(idx - el) <= 1) { check = false }
-  })
-  return check;
-}
-sorted.forEach(el => {
-  if (validHouse(hash[el][0]) === true){
-    sum += el;
-    selected.push(hash[el][0])
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+  let arr = [nums[0]];
+  if (nums[1] > nums[0]){
+    arr.push(nums[1]);
+  } else {
+    arr.push(nums[0]);
   }
-  hash[el].shift();
-});
-
-return sum;
+  let i = 2;
+  while (i < nums.length){
+    if (arr[i-2] + nums[i] > arr[i-1]){
+      arr.push(arr[i-2] + nums[i]);
+    } else {
+      arr.push(arr[i-1]);
+    }
+    i += 1;
+  }
+  return arr[arr.length-1];
+// let hash = new Object();
+// let selected = [];
+// let sum = 0;
+// nums.forEach((el, idx) => {
+//   if (typeof hash[el] === 'undefined'){ hash[el] = [idx] }
+//   else { hash[el].push(idx) }
+// });
+// let sorted = nums.sort().reverse();
+// const validHouse = function(idx){
+//   let check = true;
+//   selected.forEach(el => {
+//     if (Math.abs(idx - el) <= 1) { check = false }
+//   })
+//   return check;
+// }
+// sorted.forEach(el => {
+//   if (validHouse(hash[el][0]) === true){
+//     sum += el;
+//     selected.push(hash[el][0])
+//   }
+//   hash[el].shift();
+// });
+//
+// return sum;
 }
