@@ -482,3 +482,19 @@ const rob = functino(nums){
 //
 // return sum;
 }
+
+class MovingAverage{
+  constructor(size){
+    this.maxLength = size;
+    this.arr = [];
+  }
+
+  next(val){
+    this.arr.push(val);
+    if (this.arr.length > this.maxLength){
+      this.arr.shift();
+    }
+
+    return this.arr.reduce((el, sum) => sum += el) / this.arr.length;
+  }
+}
