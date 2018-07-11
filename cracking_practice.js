@@ -437,3 +437,30 @@ const deleteNode = function(node){
   node.val = node.next.val;
   node.next = node.next.next;
 }
+
+const rob = functino(nums){
+let hash = new Object();
+let selected = [];
+let sum = 0;
+nums.forEach((el, idx) => {
+  if (typeof hash[el] === 'undefined'){ hash[el] = [idx] }
+  else { hash[el].push(idx) }
+});
+let sorted = nums.sort().reverse();
+const validHouse = function(idx){
+  let check = true;
+  selected.forEach(el => {
+    if (Math.abs(idx - el) <= 1) { check = false }
+  })
+  return check;
+}
+sorted.forEach(el => {
+  if (validHouse(hash[el][0]) === true){
+    sum += el;
+    selected.push(hash[el][0])
+  }
+  hash[el].shift();
+});
+
+return sum;
+}
