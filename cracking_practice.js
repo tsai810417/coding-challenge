@@ -498,3 +498,37 @@ class MovingAverage{
     return this.arr.reduce((el, sum) => sum += el) / this.arr.length;
   }
 }
+
+const nextClosestTime = function(str){
+	let tempMin;
+	let tempTime = "";
+	tempMin = str.slice(0,2)*60 + str.slice(3)*1;
+
+	// function to convert minutes to time string
+	const minToTime = function(num){
+        if(num >= 1440) num -= 1440;
+		let time = Math.floor(num/60) + ":" + num%60
+		if(num < 600) time = "0" + time;
+		if(num%60 < 10) time = time.slice(0,3) + "0" + time.slice(3)
+		return time;
+	}
+
+	// function to check if new time string is formed by the digits
+	const validTime = function(){
+		for(i = 0; i < tempTime.length; i++){
+			if(!str.includes(tempTime[i])) return false;
+		}
+		return true;
+	}
+
+	// a loop that keep adding 1min then check if valid
+	while(true){
+		tempMin += 1;
+		tempTime = minToTime(tempMin);
+		if(validTime()) return tempTime
+	}
+
+	// test case
+	console.log(tempTime)
+	return validTime();
+}
