@@ -585,25 +585,50 @@ class ValidWordAbbr{
   }
 
   isUnique(str){
-    const abbr = function(str){
-      if (str.length > 2){
-        return str[0] + `${str.length-2}` + str[str.length-1];
-      } else {
-        return str;
-      }
-    }
-    let arr = [];
-    let strAbbr= abbr(str);
-    this.dictionary.forEach(el => {
-      if (el !== str){arr.push(el)}
-    });
+    // const abbr = function(str){
+    //   if (str.length > 2){
+    //     return str[0] + `${str.length-2}` + str[str.length-1];
+    //   } else {
+    //     return str;
+    //   }
+    // }
+    // let arr = [];
+    // let strAbbr= abbr(str);
+    // this.dictionary.forEach(el => {
+    //   if (el !== str){arr.push(el)}
+    // });
+    // let check = true;
+    // arr.map(el => abbr(el)).forEach(el => {
+    //   if(el === strAbbr){
+    //     check = false;
+    //   }
+    // })
+    //
+    // return check;
     let check = true;
-    arr.map(el => abbr(el)).forEach(el => {
-      if(el === strAbbr){
+    this.dictionary.forEach(el => {
+      if(el.length === str.length && el !== str && el[0] = str[0] && el[el.length-1] === str[str.length-1]){
         check = false;
       }
-    })
+    });
 
     return check;
   }
+}
+
+const longestConsecutive = function(root){
+  let maxLength = 0;
+  const dfs = function(node, currentLength, targetVal){
+    if(!node) return;
+    if(node.val === targetVal){
+      currentLength += 1;
+    } else {
+      currentLength = 1;
+    }
+    maxLength = Math.max(currentLength, maxLength);
+    dfs(node.left, currentLength, node.val+1);
+    dfs(node.right, currentLength, node.val+1);
+  }
+  dfs(root, 0,0);
+  return maxLength;
 }
