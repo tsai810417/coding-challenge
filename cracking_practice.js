@@ -532,3 +532,33 @@ const nextClosestTime = function(str){
 	console.log(tempTime)
 	return validTime();
 }
+
+var licenseKeyFormatting = function(S, K) {
+  // get all the chars into an array except the dash
+  let arr = S.split('').filter(el => el !== '-' && el !== '_');
+
+  // determine the first part of new license key
+  if (arr.length === 0) return ""
+  let firstPart = arr.length % K;
+  if (firstPart === 0) firstPart = K;
+
+  // create var to store result
+  let newS = "";
+  for (i = 0; i < firstPart; i++){
+    newS += arr.shift().toUpperCase();
+  }
+    if (arr.length/K >= 1) newS = newS.concat('-');
+    
+  // create var to keep track on when to add dash
+  let c = 0;
+  while (arr.length > 0){
+    if (c === K){
+      c = 0;
+      newS = newS.concat('-');
+    } else {
+      c += 1;
+      newS += arr.shift().toUpperCase();
+    }
+  }
+  return newS;
+};
