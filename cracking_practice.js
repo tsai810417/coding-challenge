@@ -548,7 +548,7 @@ var licenseKeyFormatting = function(S, K) {
     newS += arr.shift().toUpperCase();
   }
     if (arr.length/K >= 1) newS = newS.concat('-');
-    
+
   // create var to keep track on when to add dash
   let c = 0;
   while (arr.length > 0){
@@ -562,3 +562,19 @@ var licenseKeyFormatting = function(S, K) {
   }
   return newS;
 };
+
+const backspaceCompare = function(str1, str2){
+  const process = function(str){
+    let newStr = "";
+    for (i = 0; i < str.length; i++){
+      if(i !== 0 && str[i] === '#'){
+        newStr = newStr.slice(0,(str.length-1));
+      } else if (str[i] !== '#'){
+        newStr = newStr.concat(str[i]);
+      }
+    }
+    return newStr;
+  }
+
+  return process(str1, str2);
+}
