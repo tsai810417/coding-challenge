@@ -632,3 +632,14 @@ const longestConsecutive = function(root){
   dfs(root, 0,0);
   return maxLength;
 }
+
+const anagramMappings = function(A, B){
+  // create a hash to store key as B's element value as index
+  let hash = new Object();
+  for (i = 0; i < B.length; i++){
+    hash[B[i]] = i;
+  }
+
+  // map through A and replace to hash's value, which is the idx of that el in B
+  return A.map(el => hash[el])
+}
