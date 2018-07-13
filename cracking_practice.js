@@ -578,3 +578,32 @@ const backspaceCompare = function(str1, str2){
 
   return process(str1, str2);
 }
+
+class ValidWordAbbr{
+  constructor(dictionary){
+    this.dictionary = dictionary
+  }
+
+  isUnique(str){
+    const abbr = function(str){
+      if (str.length > 2){
+        return str[0] + `${str.length-2}` + str[str.length-1];
+      } else {
+        return str;
+      }
+    }
+    let arr = [];
+    let strAbbr= abbr(str);
+    this.dictionary.forEach(el => {
+      if (el !== str){arr.push(el)}
+    });
+    let check = true;
+    arr.map(el => abbr(el)).forEach(el => {
+      if(el === strAbbr){
+        check = false;
+      }
+    })
+
+    return check;
+  }
+}
