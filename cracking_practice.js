@@ -668,3 +668,16 @@ const peakIndexInMountainArray = function (arr){
     }
   }
 }
+
+const judgeCircle = function(moves){
+  // create a hash key is L, D iterate through moves if L -1, R +1, D -1, U +1. if at the end all keys is 0 means it made a circle
+  let hash = {'L': 0, 'D':0};
+  moves.forEach(el => {
+    if (el === 'L') hash['L'] -= 1
+    if (el === 'R') hash['L'] += 1
+    if (el === 'D') hash['D'] -= 1
+    if (el === 'U') hash['D'] += 1
+  })
+
+  return Object.values(hash)[0] === 0 && Object.values(hash)[1] === 0;
+}
