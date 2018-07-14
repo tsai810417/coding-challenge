@@ -813,19 +813,27 @@ const findLUSlength = function(a, b) {
 const findMaxConsecutiveOnes = function(nums){
   // have a var to keep track longest consecutive ones
   let maxOnes = 0;
-  // loop through the array, a temp var to keep track on the consecutive ones at the time, update when exceed the maxOnes
+  // loop through the array, increament the temp and update the maxOnes. when you see 1, reset temp when you see 0
   let temp = 0;
-  nums.forEach((el, idx) => {
-    if(el === 1 && temp = 0){
-      temp = 1;
-    } else if (el === 1 && temp !== 0){
+  nums.forEach(el => {
+    if (el === 1){
       temp += 1;
-      maxOnes = Math.max(maxOnes, temp);
-    }
-    else {
+      maxOnes = Math.max(temp, maxOnes);
+    } else {
       temp = 0;
     }
-  });
+  })
+  // nums.forEach((el, idx) => {
+  //   if(el === 1 && temp = 0){
+  //     temp = 1;
+  //   } else if (el === 1 && temp !== 0){
+  //     temp += 1;
+  //     maxOnes = Math.max(maxOnes, temp);
+  //   }
+  //   else {
+  //     temp = 0;
+  //   }
+  // });
 
   return maxOnes;
 }
