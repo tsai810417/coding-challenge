@@ -782,17 +782,18 @@ const isToeplitzMatrix = function(matrix){
 const generatePossibleNextMoves = function(s) {
   // helper method generate new string when giving the idx to flip
   const flip = function(idx){
-    let res = "";
-    for(i = 0; i < s.length; i++){
-      if (idx === i || idx+1 === i){
-        if (s[i] === '+'){
-          res = res.concat('-');
-        }
-      } else {
-        res = res.concat(s[i]);
-      }
-    }
-    return res;
+    return s.slice(0,idx) + '--' + s.slice(idx+2);
+    // let res = "";
+    // for(i = 0; i < s.length; i++){
+    //   if (idx === i || idx+1 === i){
+    //     if (s[i] === '+'){
+    //       res = res.concat('-');
+    //     }
+    //   } else {
+    //     res = res.concat(s[i]);
+    //   }
+    // }
+    // return res;
   }
   let possible = [];
   for (idx = 0; idx < s.length-1; idx++){
