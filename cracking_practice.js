@@ -752,3 +752,29 @@ const islandPerimeter = function(grid){
 
   return sticks;
 }
+
+const isToeplitzMatrix = function(matrix){
+  let lastI = matrix.length - 1;
+  let lastJ = matrix[0].length - 1;
+  // write a helper to check a node with all its diagonal elements
+  const checkDiagonal = function(i, j){
+    if (i === lastI || j === lastJ) return true;
+    let val = matrix[i][j];
+    while (i <= lastI && j <= lastJ){
+      if(matrix[i][j] !== val) return false;
+      i += 1;
+      j +=1 ;
+    }
+    return true;
+  }
+
+  for (j = 0; j <= lastJ; j++){
+    if (checkDiagonal(0,j) === false) return false;
+  }
+
+  for (i = 0; i <= lastI; i++){
+    if (checkDiagonal(i, 0) === false) return false;
+  }
+
+  return true;
+}
