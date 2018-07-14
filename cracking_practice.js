@@ -699,3 +699,25 @@ class Logger {
     }
   }
 }
+
+const canPermutePalindrome = function(str){
+  // create a hash to track each character
+  // a palindrome is when even length same amount of all characters, when odd length only one character can have 1 extra than while all the other charaters having same amount
+  hash = new Object();
+  for (i = 0; i < str.length; i++){
+    if (typeof hash[str[i]] === 'undefined'){
+      hash[str[i]] = 1;
+    } else if (hash[str[i]] === 0){
+      hash[str[i]] += 1;
+    } else {
+      hash[str[i]] -= 1;
+    }
+  }
+
+  notEvenCount = Object.values.filter(el => el !== 0).length;
+  if (str.length%2 === 0){
+    return notEvenCount === 0;
+  } else {
+    return notEvenCount === 1;
+  }
+}
