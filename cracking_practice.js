@@ -643,3 +643,28 @@ const anagramMappings = function(A, B){
   // map through A and replace to hash's value, which is the idx of that el in B
   return A.map(el => hash[el])
 }
+
+const flipAndInverImage = function(arr){
+  // helper that will do the flip and invert work for each el
+  const process = function(subArr){
+    let res = [];
+    for(i = subArr.length-1; i >= 0; i--){
+      if (subArr[i] === 1){
+        res.push(0);
+      } else {
+        res.push(1);
+      }
+    }
+    return res;
+  }
+
+  return arr.map(el => process(el));
+}
+
+const peakIndexInMountainArray = function (arr){
+  for (i = 0; i < arr.length; i++){
+    if (arr[i] > arr[i-1] && arr[i+1] < arr[i]){
+      return i;
+    }
+  }
+}
