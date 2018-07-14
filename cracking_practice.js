@@ -766,15 +766,15 @@ const isToeplitzMatrix = function(matrix){
       j +=1 ;
     }
     return true;
-  }
+  };
 
+  // create to loop to run helper on the element in first row or first column only
   for (j = 0; j <= lastJ; j++){
     if (checkDiagonal(0,j) === false) return false;
-  }
-
+  };
   for (i = 0; i <= lastI; i++){
     if (checkDiagonal(i, 0) === false) return false;
-  }
+  };
 
   return true;
 }
