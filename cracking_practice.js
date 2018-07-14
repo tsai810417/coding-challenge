@@ -681,3 +681,21 @@ const judgeCircle = function(moves){
 
   return Object.values(hash)[0] === 0 && Object.values(hash)[1] === 0;
 }
+
+class Logger {
+  constructor(){
+    this.history = new Object();
+  }
+
+  shouldPrintMessage(timestamp, message){
+    if (typeof this.history[message] === 'undefined'){
+      this.history[message] = timestamp;
+      return true;
+    } else if (timestamp - this.history[message] >= 10) {
+      this.history[message] = timestamp;
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
