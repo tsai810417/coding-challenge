@@ -721,3 +721,34 @@ const canPermutePalindrome = function(str){
     return notEvenCount === 1;
   }
 }
+
+const islandPerimeter = function(grid){
+  let height = grid.length;
+  let width = grid[0].length;
+  let sticks = 0;
+		// helper to determine how many sticks around a block
+  const countSticks = function(i, j){
+    // cases to add a stick:
+    // the beginning or ending block or if the block's top, down, left or right is 0
+    if (i === 0) sticks += 1;
+    if (i === height-1) sticks += 1;
+    if (j === 0) sticks += 1;
+    if (j === width-1) sticks += 1;
+    // top
+    if (i-1 >= 0 && grid[i-1][j] === 0) sticks += 1;
+    // down
+    if (i+1 < height && grid[i+1][j] === 0) sticks += 1;
+    // left
+    if (j-1 >= 0 && grid[i][j-1] === 0) sticks += 1;
+    // right
+    if (j+1 < width && grid[i][j+1] === 0) sticks += 1;
+  }
+
+  for (h = 0; h < height; h++){
+    for (w = 0; w < width; w++){
+      if (grid[h][w] === 1) countSticks(h, w);
+    }
+  }
+
+  return sticks;
+}
