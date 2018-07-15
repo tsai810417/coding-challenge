@@ -842,6 +842,26 @@ const detectCapitalUse = function(word){
   return word.toUpperCase() === word || word.slice(1).toLowerCase() === word.slice(1);
 }
 
+const findDisappearedNumbers = function(nums){
+  let res = [];
+  nums.forEach((el, idx) => {
+    if (el < 0){
+      temp = - el;
+    } else {
+      temp = el
+    }
+    if (nums[temp-1] > 0){
+      nums[temp-1] *= -1;
+    }
+  });
+  nums.forEach((el, idx) => {
+    if (el > 0){
+      res.push(idx+1);
+    }
+  })
+
+  return res;
+}
 
 
 
