@@ -838,7 +838,9 @@ const findMaxConsecutiveOnes = function(nums){
   return maxOnes;
 }
 
-
+const detectCapitalUse = function(word){
+  return word.toUpperCase() === word || word.slice(1).toLowerCase() === word.slice(1);
+}
 
 
 
