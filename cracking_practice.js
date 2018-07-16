@@ -904,6 +904,27 @@ const getMinimumDifference = function(root){
   return minimum;
 }
 
+const firstUniqChar = function(str){
+  // create a hash to store the chars and its correspoding indecies
+  let hash = new Object();
+  for(i = 0; i < str.length; i++){
+    if (typeof hash[str[i]] === 'undefined'){
+      hash[str[i]] = 1;
+    } else {
+      hash[str[i]]+=1;
+    }
+  }
+
+  // iterate the str again and if the value in the hash is 1 return that index
+  for(i = 0; i < str.length; i++){
+    if(hash[s[i]] === 1){
+      return i;
+    }
+  }
+
+  return -1;
+}
+
 
 
 
