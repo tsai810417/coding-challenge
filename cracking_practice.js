@@ -991,6 +991,28 @@ const largeGroupPositions = function(s){
   return res;
 }
 
+const longestPalindrome = function(s){
+  // a palindrom has to have even number of a char
+  // at most can have 1 char that is odd count
+  // a true or false var to check if there's a odd number char
+  let length = 0;
+  let single = false;
+  // iterate every cahrs in the string and keep the count of each chars to a hash
+  let hash = new Object();
+  for (i = 0; i < s.length; i++){
+    hash[s[i]] = (hash[s[i]] || 0) + 1;
+  }
+  // iterate the hash's values get the even amount of char add them to the length;
+  Object.values(hash).forEach(el => {
+    length += Math.floor(el/2) * 2;
+    if (el % 2 === 1){
+      single = true;
+    }
+  });
+  if (single === true) length += 1;
+  return length;
+}
+
 
 
 
