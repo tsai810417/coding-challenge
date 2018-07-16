@@ -925,6 +925,75 @@ const firstUniqChar = function(str){
   return -1;
 }
 
+const numberOfBoomerangs = function(points){
+  // helper to find the distance square between 2 points
+  const distance = function(p1, p2){
+    return ((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2) ** 0.5;
+  }
+  let res = 0;
+  let hash = {};
+  for(i = 0; i < points.length; i++){
+    // reset the hash
+    hash = {};
+    for(j = 0; j < points.length; j++){
+      let temp = distance(points[i], points[j]);
+      hash[temp] = (hash[temp] || 0) + 1;
+    }
+    // add how many possible ans to res
+    Object.values(hash).forEach(el => {
+      res += el * (el-1);
+    })
+  }
+
+  return res;
+}
+
+const findRelativeRanks = function(nums){
+  // create a hash to store their points and their index
+  let hash = new Object();
+  let res = [];
+  nums.forEach((el, idx) => {
+    hash[el] = idx;
+  });
+
+  // sort the nums then update the res with their places
+  nums.sort((a,b) => a - b).forEach((el, idx) => {
+    if (idx === nums.length-1){
+      res[hash[el]] = 'Gold Medal';
+    } else if (idx === nums.length-2){
+      res[hash[el]] = 'Silver Medal';
+    } else if (idx === nums.length -3){
+      res[hash[el]] = 'Bronze Medal';
+    } else {
+      res[hash[el]] = (nums.length - idx).toString();
+    }
+  });
+
+
+
+  return res;
+}
+
+const largeGroupPositions = function(s){
+  let res = [];
+  let beginIdx = 0;
+  let count = 1;
+  for(i = 1; i <= s.length; i++){
+    if (s[i] != s[i-1]){
+      if (count >= 3) res.push([beginIdx, i-1])
+      beginIdx = i;
+      count = 1;
+    } else {
+      count += 1;
+    }
+  }
+
+  return res;
+}
+
+
+
+
 
 
 
