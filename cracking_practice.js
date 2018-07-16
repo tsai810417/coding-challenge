@@ -863,6 +863,50 @@ const findDisappearedNumbers = function(nums){
   return res;
 }
 
+const rotatedDigits = function(num){
+  let sum = 0;
+  let hash = {2, 5, 6, 9}
+  const checkNumber = function(n){
+    let str = n.toString();
+    for(i = 0; i<str.length; i++){
+      if(typeof hash[str[i]] === 'undefined') return false;
+    }
+
+    return true;
+  }
+  for (i = 1; i <= num; i++){
+    if (checkNumber(i)) sum += 1;
+  }
+
+  return sum;
+}
+
+const getMinimumDifference = function(root){
+  // traverse the BST and put them in an array, then compare the neighbor elements to find the minimum difference.
+  let nums;
+  let minimum;
+  // helper to traverse the BST
+  const process = function(node){
+    if (node){
+      return process(node.left).concat([node.val], process(node.right));
+    } else {
+      return [];
+    }
+  }
+
+  nums = process(root);
+  for(i = 0; i < nums.length-1; i++){
+    if(typeof minimum === 'undefined' || nums[i+1] - nums[i] < minimum){
+      minimum = nums[i+1]-nums[i];
+    }
+  }
+
+  return minimum;
+}
+
+
+
+
 
 
 
