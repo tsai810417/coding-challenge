@@ -1130,20 +1130,22 @@ const findContestMatch = function(n){
 const wiggleSort = function(nums){
   // create a boolean to check if requirements met
   let check = false;
+  // a helper function to swap the elements in two indecies in the given array
+  const swap = function(i1, i2){
+    let temp = nums[i1];
+    nums[i1] = nums[i2];
+    nums[i2] = temp;
+  }
   while(check === false){
     check = true;
     // every time we only have to pick odd idx and check its neighbors
     for (i = 1; i < nums.length; i += 2){
       if (nums[i] < nums[i-1]){
-        temp = nums[i];
-        nums[i] = nums[i-1];
-        nums[i-1] = temp;
+        swap(i, i-1);
         check = false;
       }
       if (nums[i] < nums[i+1]){
-        temp = nums[i];
-        nums[i] = nums[i+1];
-        nums[i+1] = temp;
+        swap(i, i+1);
         check = false;
       }
     }
