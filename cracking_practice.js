@@ -1181,18 +1181,26 @@ const canVisitAllRooms = function(rooms){
 
 const getModifiedArray = function(length, updates){
   // initialize the array with all 0's and given length
-  let arr = [];
-  for(i = 0; i < length; i++){
-    arr.push(0);
-  }
+  let arr = new Array(length).fill(0);
 
   // create a helper to handle one operation at a time
   const operation = function(start, end, inc){
-    temp = arr.slice(start, end+1);
-    temp = temp.map(el => el + inc);
-    arr = arr.slice(0, start).concat(temp, arr.slice(end+1));
+    // for (i = start; i <= end; i++){
+    //   arr[i] += inc;
+    // }
+    // instead of updating all the elements in the range, only update the start and end+1 position
+    arr[start] += inc;
+    if (end+1 < length){
+      arr[end+1] -= inc;
+    }
   }
   updates.forEach(el => operation(el[0], el[1], el[2]));
+
+  // return arr;
+  // iterate through the arr and update each element by adding the previous element
+  for(i = 1; i < length; i++){
+    arr[i] += arr[i-1];
+  }
 
   return arr;
 }
