@@ -1127,6 +1127,32 @@ const findContestMatch = function(n){
   return teams[0];
 }
 
+const wiggleSort = function(nums){
+  // create a boolean to check if requirements met
+  let check = false;
+  while(check === false){
+    check = true;
+    // every time we only have to pick odd idx and check its neighbors
+    for (i = 1; i < nums.length; i += 2){
+      if (nums[i] < nums[i-1]){
+        temp = nums[i];
+        nums[i] = nums[i-1];
+        nums[i-1] = temp;
+        check = false;
+      }
+      if (nums[i] < nums[i+1]){
+        temp = nums[i];
+        nums[i] = nums[i+1];
+        nums[i+1] = temp;
+        check = false;
+      }
+    }
+  }
+
+  return nums;
+}
+
+
 
 
 
