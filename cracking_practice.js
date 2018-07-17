@@ -1101,7 +1101,26 @@ const binaryTreePaths = function(node){
   }
 }
 
+const findContestMatch = function(n){
+  let teams = [];
+  for(i = 1; i <= n; i++){
+    teams.push(i);
+  }
+  // helper to take 2 string as input array then return matched string
+  const match = function(arr){
+    return `(${arr[0]},${arr[1]})`
+  }
+  while (teams.length > 1){
+    let temp = [];
+    for(i = 0; i < teams.length/2; i++){
+      temp.push(match([teams[i], teams[teams.length-1-i]]));
+    }
+    teams = temp;
+    console.log(teams);
+  }
 
+  return teams[0]
+}
 
 
 
