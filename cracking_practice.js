@@ -1082,6 +1082,14 @@ const checkRecord = function(s){
   return true;
 }
 
+const reverseStr = function(s,k){
+  let newStr = "";
+  for (i = 0; i < s.length; i += 2*k){
+    newStr += s.slice(i, i+k).split('').reverse().join('') + s.slice(i+k, i+(2*k))
+  }
+  return newStr;
+}
+
 
 
 
