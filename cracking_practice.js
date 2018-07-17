@@ -1102,24 +1102,29 @@ const binaryTreePaths = function(node){
 }
 
 const findContestMatch = function(n){
+  // create a teams array to hold the teams that are going to be matched
   let teams = [];
+  // before any matches, teams should be 1..n
   for(i = 1; i <= n; i++){
     teams.push(i);
   }
-  // helper to take 2 string as input array then return matched string
-  const match = function(arr){
-    return `(${arr[0]},${arr[1]})`
+  // create a helper function to match 2 teams(in an array)
+  const match = function(t){
+    return `(${t[0]},${t[1]})`;
   }
+  // while the teams.length > 1 means there are more than one teams need to be matched
   while (teams.length > 1){
+    // create a var to hold the result after match, update the teams array after each iteration
     let temp = [];
-    for(i = 0; i < teams.length/2; i++){
+    // pass the 1st vs last teams and so on in the teams to the match and push the result to the temp
+    for(i = 0; i<teams.length/2; i++){
       temp.push(match([teams[i], teams[teams.length-1-i]]));
     }
+    // update the matched to the teams
     teams = temp;
-    console.log(teams);
-  }
-
-  return teams[0]
+  };
+  // when there is only one element in the teams array means all teams are matched so return the first element
+  return teams[0];
 }
 
 
