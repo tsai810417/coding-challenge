@@ -1030,6 +1030,36 @@ const diameterOfBinaryTree = function(root){
   return maxLength;
 }
 
+const readBinaryWatch = function(num){
+  // for all the possible time, calculate how many lights will be on, if the lights on === num given, push that time to the returning arr
+  let res = [];
+  // helper to calculate how many lights will be on at a given hour and minutes
+  const calLight = function(hr, min){
+    let light = 0
+    light += hr.toString(2).split('').filter(el => el == 1).length;
+    light += min.toString(2).split('').filter(el => el == 1).length;
+    return light;
+  }
+  // helper to turn the hours and minutes to a valid time string
+  const toValidTime = function(hr, min){
+    if (min < 10){
+      return hr.toString() + ':0' + min.toString();
+    } else {
+      return hr.toString() + ':' + min.toString();
+    }
+  }
+  // loop to process all the possible time
+  for(h = 0; h < 12; h++){
+    for(m = 0; m < 60; m++){
+      if (calLight(h,m) === num){
+        res.push(toValidTime(h,m));
+      }
+    }
+  }
+
+  return res;
+}
+
 
 
 
