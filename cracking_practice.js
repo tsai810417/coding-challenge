@@ -1090,6 +1090,16 @@ const reverseStr = function(s,k){
   return newStr;
 }
 
+const binaryTreePaths = function(node){
+  if (node === null) return [];
+  if (node.left === null && node.right === null){
+    return [`${node.val}`];
+  } else {
+    let left = binaryTreePaths(node.left);
+    let right = binaryTreePaths(node.right);
+    return (left.concat(right)).map(el => `${node.val}->${el}`);
+  }
+}
 
 
 
