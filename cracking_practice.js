@@ -1205,6 +1205,33 @@ const getModifiedArray = function(length, updates){
   return arr;
 }
 
+const findLonelyPixel = function(picture){
+  let count = 0;
+  let height = picture.length;
+  let width = picture[0].length;
+  // create a col hash to store the col vs how many 'B' in that col
+  col = new Object();
+  // create a row hash to store the row vs how many 'B' in that row
+  row = new Object();
+  // iterate the picture and update the hashes when 'B' appears
+  for(i=0; i<height; i++){
+    for(j=0; j<width; j++){
+      if (picture[i][j] === 'B'){
+        col[j] = (col[j] || 0) + 1;
+        row[i] = (row[i] || 0) + 1;
+      }
+    }
+  }
+  // iterate the picture again and if the el is 'B' check for that row and col if its the only 'B' then count += 1
+  for(i=0; i<height; i++){
+    for(j=0; j<width; j++){
+      if (picture[i][j] === 'B' && col[j] === 1 && row[i] === 1) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+}
 
 
 
