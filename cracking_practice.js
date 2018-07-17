@@ -1154,6 +1154,33 @@ const wiggleSort = function(nums){
   return nums;
 }
 
+const canVisitAllRooms = function(rooms){
+  // create a hash key is the room# and value is visited or not
+  let hash = new Object();
+  // create an arr to store which room to check next begin with room 0
+  let arr = [0];
+  // if the arr is not empty means theres other rooms that you can visit
+  while (arr.length > 0){
+    // skip the first room in the arr if it was visited by checking the hash
+    if (hash[arr[0]] !== true) {
+      // put the key that you found in the first room of the arr
+      arr = arr.concat(rooms[arr[0]]);
+      // also set the value of first room in the hash to true;
+      hash[arr[0]] = true;
+      // then shift to remove visited room from the arr
+    }
+    arr.shift()
+  }
+  // iterate the given # of rooms to see if all the rooms are visited
+  for(i = 0; i < rooms.length; i++){
+    if(typeof hash[i] === 'undefined') return false;
+  }
+
+  return true;
+}
+
+
+
 
 
 
