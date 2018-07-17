@@ -1013,6 +1013,22 @@ const longestPalindrome = function(s){
   return length;
 }
 
+const diameterOfBinaryTree = function(root){
+  // create a var to hold the maxLength found
+  let maxLength = 0;
+  // helper function to find out the depth of a node and also update the maxLength if found by current node (node.left depth + node.right depth)
+  const depth = function(node){
+    if (node === null) return 0; //this is the base case
+    let left = depth(node.left);
+    let right = depth(node.right);
+    // update the maxLength if left depth + right depth is greater
+    maxLength = Math.max(maxLength, left+right);
+    return Math.max(left, right) + 1;
+  }
+  // call the helper function with the root
+  depth(root);
+  return maxLength;
+}
 
 
 
