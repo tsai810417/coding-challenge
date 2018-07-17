@@ -1060,6 +1060,32 @@ const readBinaryWatch = function(num){
   return res;
 }
 
+const checkRecord = function(s){
+  // iterate the given s keep track on how many A total once reach 2 return false; for continuous L when you see L mark 1 if another L follwing return false otherwise reset L to 0
+  let A = 0;
+  let L = 0;
+  for (i = 0; i < s.length; i++){
+    if (s[i] === 'A'){
+      A += 1;
+      if (A > 1) return false;
+    }
+    if (s[i] === 'L'){
+      if (L === 2){
+        return false;
+      } else{
+        L += 1;
+      }
+    } else {
+      L = 0;
+    }
+  }
+  return true;
+}
+
+
+
+
+
 
 
 
