@@ -1233,6 +1233,60 @@ const findLonelyPixel = function(picture){
   return count;
 }
 
+/**
+ * Initialize your data structure here.
+ */
+var HitCounter = function() {
+    this.bank = [];
+};
+
+/**
+ * Record a hit.
+        @param timestamp - The current timestamp (in seconds granularity).
+ * @param {number} timestamp
+ * @return {void}
+ */
+HitCounter.prototype.hit = function(timestamp) {
+    this.bank.push(timestamp);
+};
+
+/**
+ * Return the number of hits in the past 5 minutes.
+        @param timestamp - The current timestamp (in seconds granularity).
+ * @param {number} timestamp
+ * @return {number}
+ */
+HitCounter.prototype.getHits = function(timestamp) {
+    return this.bank.filter(el => timestamp - el < 5*60).length;
+};
+
+/**
+ * Your HitCounter object will be instantiated and called as such:
+ * var obj = Object.create(HitCounter).createNew()
+ * obj.hit(timestamp)
+ * var param_2 = obj.getHits(timestamp)
+ */
+
+const plusOne = function(head){
+  // helper that add 1 to the node, if val become 10 val = 0 and then call this function on previous node
+  const add = function(node){
+    if (node.next.val < 9){
+      node.next.val += 1;
+    } else {
+      node.next.val = 0;
+      node.val += 1;
+    }
+  }
+  if(node.next.next === null){
+    add(node);
+  } else {
+    plusOne(head.next);
+    return head;
+  }
+}
+
+
+
 
 
 
