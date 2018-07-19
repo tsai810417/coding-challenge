@@ -1265,23 +1265,32 @@ HitCounter.prototype.getHits = function(timestamp) {
  * var obj = Object.create(HitCounter).createNew()
  * obj.hit(timestamp)
  * var param_2 = obj.getHits(timestamp)
- */
+**/
 
-const plusOne = function(head){
-  // helper that add 1 to the node, if val become 10 val = 0 and then call this function on previous node
-  const add = function(node){
-    if (node.next.val < 9){
-      node.next.val += 1;
+class ZigzagIterator{
+  constructor(v1,v2){
+    let res = [];
+    let i = 0;
+    while (i < v1.length && i < v2.length){
+      res.push(v1[i]);
+      res.push(v2[i]);
+      i++;
+    };
+    if (v1.length > v2.length){
+      res = res.concat(v1.slice(i));
     } else {
-      node.next.val = 0;
-      node.val += 1;
-    }
+      res = res.concat(v2.slice(i));
+    };
+    this.translated = res;
+    this.counter = 0;
   }
-  if(node.next.next === null){
-    add(node);
-  } else {
-    plusOne(head.next);
-    return head;
+  hasNext(){
+    return this.counter < this.translated.length;
+  }
+
+  next(){
+    this.counter += 1;
+    return this.translated[this.counter - 1];
   }
 }
 
