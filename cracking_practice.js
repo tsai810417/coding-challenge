@@ -1294,6 +1294,26 @@ class ZigzagIterator{
   }
 }
 
+const dailyTemperatures = function(temperatures){
+  // create an array to store the result and initialize to 0
+  let res = new Array(temperatures.length).fill(0);
+  // create an array to store the temperature index stack initialize to the last element in the temperatures
+  let tempStack = [temperatures.length-1];
+  // start to iterate the given temperatures from the second to the last element
+  for (i = temperatures.length-2; i >= 0; i--){
+    // if the stack is not empty and the last element in the stack is not larger than the current temp then pop from stack
+    while (tempStack.length > 0 && temperatures[tempStack[tempStack.length-1]] <= temperatures[i]){
+      tempStack.pop();
+    }
+    if (tempStack.length > 0){
+      res[i] = tempStack[tempStack.length-1] - i
+    }
+    tempStack.push(i);
+  }
+
+  return res;
+}
+
 
 
 
