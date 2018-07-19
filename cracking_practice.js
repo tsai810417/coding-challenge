@@ -1312,6 +1312,23 @@ const dailyTemperatures = function(temperatures){
   }
 
   return res;
+};
+
+const frequencySort = function(s){
+  // create a hash table to store the chars and their frequencies
+  let hash = new Object();
+  let res = "";
+  for (i = 0; i < s.length; i++){
+    hash[s[i]] = (hash[s[i]] || 0) + 1;
+  }
+  // sort the keys by the decending order of the values
+  // each of the keys push the same amount of the frequencies to the result string
+  Object.keys(hash).sort((a, b) => hash[b] - hash[a]).forEach(el => {
+    for(i = 0; i < hash[el]; i++){
+      res.push(el);
+    }
+  });
+  return res;
 }
 
 
