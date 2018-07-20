@@ -1350,6 +1350,34 @@ const escapeGhosts = function(ghosts, target){
   return check;
 }
 
+const numComponents = function(head, group){
+  // get all the linkedList elements
+  let nodes = []
+  let curNode = head;
+  let res = 0;
+  while (curNode !== null){
+    nodes.push(curNode.val);
+    curNode = curNode.next;
+  }
+  let i = 0, j = 0;
+  while (i < nodes.length && j < group.length){
+    if (nodes[i] === group[j]){
+      res += 1;
+      i += 1;
+      j += 1;
+    } else if (nodes[i] > group[j]){
+      j += 1;
+    } else if (nodes[i] < group[j]){
+      i += 1;
+    } else {
+      i += 1;
+      j += 1;
+    }
+  }
+
+  return res;
+}
+
 const nextGreater = function(arr){
 	let input = arr.concat(arr);
 	let res = [];
@@ -1365,6 +1393,7 @@ const nextGreater = function(arr){
 
 	return res;
 }
+
 
 
 
