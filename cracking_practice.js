@@ -1350,6 +1350,21 @@ const escapeGhosts = function(ghosts, target){
   return check;
 }
 
+const nextGreater = function(arr){
+	let input = arr.concat(arr);
+	let res = [];
+	for(i = 0; i < arr.length; i++){
+		for(temp = i+1; temp < i+arr.length; temp++){
+			if (input[temp] > arr[i]){
+				res.push(input[temp]);
+				break;
+			}
+		}
+		if(typeof res[i] === 'undefined') res.push(-1)
+	}
+
+	return res;
+}
 
 
 
