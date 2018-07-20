@@ -1331,6 +1331,25 @@ const frequencySort = function(s){
   return res;
 }
 
+const escapeGhosts = function(ghosts, target){
+  // calculate the move for both player and ghosts
+  let playerMoves;
+  let ghostsMoves;
+  let check = true;
+
+  // helper function to calculate the moves from a point to target
+  const calculateMoves = function(i, j){
+    return Math.abs(target[0] - i) + Math.abs(target[1] - j);
+  };
+  playerMoves = calculateMoves(0,0);
+  ghostsMoves = ghosts.map(el => calculateMoves(el[0], el[1]));
+  ghostsMoves.forEach(el => {
+    if (el <= playerMoves) check = false;
+  });
+
+  return check;
+}
+
 
 
 
