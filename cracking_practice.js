@@ -1394,6 +1394,37 @@ const nextGreater = function(arr){
 	return res;
 }
 
+const canWin = function(s){
+  for(i = 0; i < s.length-1; i++){
+    if (s[i] === '+' && s[i+1] === '+'){
+      s[i] = '-'
+      s[i+1] = '-'
+      let opp = canWin(s)
+      s[i] = '+'
+      s[i+1] = '+'
+      if(!opp) return true
+    }
+  }
+  return false;
+}
+
+const countNumbersWithUniqueDigits = function(n) {
+  // start with some base cases
+  if (n === 0) {
+    return 1;
+  } else if (n === 1) {
+    return 10;
+  } else {
+    let prev = countNumbersWithUniqueDigits(n-1);
+    let count = 1;
+    let temp = 9;
+    for(i = 9; count < n; i--){
+      temp *= i;
+      count += 1;
+    }
+    return prev + temp;
+  }
+}
 
 
 
