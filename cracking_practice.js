@@ -1441,6 +1441,40 @@ const countNumbersWithUniqueDigits = function(n) {
 // When n == 11, _ _ _ _ _ _ _ _ _ _ _ total choice is 9 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 * 0 = 0
 }
 
+const shortestCompletingWord = function(licensePlate, words){
+  // count the letters in the plate
+  let hash = new Object();
+  let numbers = new Object();
+  for(i = 0; i < 10; i++){
+    numbers[i] = true;
+  }
+  for(i = 0; i < licensePlate.length; i++){
+    if (numbers[licensePlate[i]] !== true && licesePlate[i] !== ' '){
+      hash[licensePlate[i].toLowerCase()] = (hash[licensePlate[i].toLowerCase()] || 0) + 1;
+    }
+  }
+  const check = function(str){
+    let counts = new Object();
+    str.forEach(el => count[el] = (count[el] || 0) + 1);
+    Object.keys(hash).forEach(el => {
+      if (typeof counts[el] === 'undefined' || counts[el] < hash[el]){
+        return false;
+      }
+    });
+    return true;
+  }
+  let min = words.length - 1;
+  let selected = [];
+  words.forEach(el => {
+    if (check(el)){
+      selected.push([el.length, el]);
+      min = Math.min(el.length, min);
+    }
+  });
+  selected.forEach(el => {
+    if (el[0] === min) return el;
+  })
+}
 
 
 
