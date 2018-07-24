@@ -1476,6 +1476,24 @@ const shortestCompletingWord = function(licensePlate, words){
   })
 }
 
+var maxA = function(N) {
+    hash = new Object();
+    for(i = 1; i <= N; i++){
+        if(i <= 3){
+            hash[i] = i;
+        } else {
+            let temp = i;
+            for (m = 1; i-m-2 >= 1; m++){
+                temp = Math.max(hash[i-m-2] * (m+1), temp)
+            }
+            hash[i] = temp;
+        }
+    }
+    return hash[N]
+};
+
+
+
 
 
 
